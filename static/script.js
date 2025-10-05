@@ -119,13 +119,19 @@ async function updateNote(id, title, content, category, isPinned) {
 }
 
 async function deleteNote(id) {
-  const res = await fetch(`${API}/notes/${id}`, {
-    method: "DELETE",
-    headers: { "Authorization": "Bearer " + localStorage.getItem("token") },
-  });
-  const data = await res.json();
-  alert(data.message);
-  loadNotes(currentPage);
+  try {
+    const res = await fetch(`${API}/notes/${id}`, {
+      method: "DELETE",
+      headers: { "Authorization": "Bearer " + localStorage.getItem("token") },
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.message || "Failed to delete note");
+    alert(data.message);
+    loadNotes(currentPage);
+  } catch (err) {
+    console.error("Delete error:", err);
+    alert("Error deleting note. Check console for details.");
+  }
 }
 
 async function loadNotes(page = 1) {
