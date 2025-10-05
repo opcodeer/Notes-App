@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Notes App</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>Login / Register</h2>
+
+    <div class="note-form">
+      <input id="username" type="text" placeholder="Username" />
+      <input id="password" type="password" placeholder="Password" />
+      <div style="display: flex; gap: 10px;">
+        <button style="flex:1;" id="loginBtn">Login</button>
+        <button style="flex:1; background-color: #28a745;" id="registerBtn">Register</button>
+      </div>
+      <p id="msg" style="color:red; margin-top:10px;"></p>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

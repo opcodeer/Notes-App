@@ -1,0 +1,163 @@
+/* Global layout */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Container */
+.container {
+  max-width: 600px;
+  margin: auto;
+  background-color: #111;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.8);
+  position: relative;
+}
+
+/* Top bar for logout */
+.top-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+/* Logout Button top-right */
+.logout-btn {
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  width: auto;          /* <-- ensure it doesn't take full width */
+  align-self: flex-end; /* <-- push it to the right in flex container */
+}
+
+
+.logout-btn:hover {
+  background-color: #cc0000;
+}
+
+/* Page title centered */
+.page-title {
+  text-align: center;
+  margin: 20px 0;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+/* Inputs and Selects */
+input, textarea, select {
+  width: 100%;
+  background-color: #1a1a1a;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 4px #007bff;
+}
+
+.pinned-check {
+  display: flex;
+  align-items: center;       /* vertically align checkbox and text */
+  justify-content: flex-start; /* left-align them */
+  gap: 6px;                  /* small space between checkbox and text */
+  margin: 6px 0;             /* slightly reduced top/bottom margin */
+  width: fit-content;        /* keeps the section only as wide as needed */
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Filter and Search section */
+.filter-section {
+  display: flex;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.filter-section select,
+.filter-section input {
+  flex: 1;
+}
+
+.filter-section button {
+  width: auto;
+}
+
+/* Notes Display */
+#notesList {
+  margin-top: 15px;
+}
+
+.note {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.note h5 {
+  margin: 0 0 6px 0;
+  font-weight: bold;
+}
+
+.note p {
+  margin: 0 0 6px 0;
+  color: #ccc;
+}
+
+.note small {
+  display: block;
+  color: #999;
+  font-size: 13px;
+}
+
+.note button {
+  background-color: #007bff;
+  width: 100%;
+  border-radius: 6px;
+  margin-top: 8px;
+}
+
+/* Pagination */
+#pager {
+  text-align: center;
+  margin-top: 15px;
+}
+
+#pager button {
+  width: auto;
+  display: inline-block;
+  margin: 5px;
+}

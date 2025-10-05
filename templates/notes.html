@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Your Notes</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <!-- Logout button top-right -->
+    <div class="top-bar">
+      <button id="logoutBtn" class="logout-btn">Logout</button>
+    </div>
+
+    <!-- Page Title -->
+    <h2 class="page-title">Your Notes</h2>
+
+    <!-- Create Note Form -->
+    <div class="note-form">
+      <input id="title" placeholder="Title">
+      <textarea id="content" placeholder="Content"></textarea>
+      <select id="category">
+        <option value="Work">Work</option>
+        <option value="Personal">Personal</option>
+        <option value="Study">Study</option>
+      </select>
+      <div class="pinned-check">
+        <input id="isPinned" type="checkbox">
+        <label for="isPinned">Pinned</label>
+      </div>
+      <button id="addBtn">Add Note</button>
+    </div>
+
+    <!-- Filter and Search -->
+    <div class="filter-section">
+      <select id="filterCat">
+        <option value="">All Categories</option>
+        <option value="Work">Work</option>
+        <option value="Personal">Personal</option>
+        <option value="Study">Study</option>
+      </select>
+      <input id="search" placeholder="Search notes...">
+      <button id="refresh">Refresh</button>
+    </div>
+
+    <!-- Notes List -->
+    <div id="notesList"></div>
+
+    <!-- Pagination -->
+    <div id="pager"></div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
