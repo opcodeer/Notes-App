@@ -144,7 +144,7 @@ def get_notes(current_user):
         'category': n.category,
         'pinned': n.pinned,
         'summary': n.summary,
-        'timestamp': n.timestamp
+        'timestamp': n.timestamp.isoformat() if n.timestamp else None
     } for n in notes])
 
 @app.route('/notes', methods=['POST'])
@@ -174,6 +174,35 @@ def create_note(current_user):
         'summary': summary
     })
 
+# ---------------- Update / Delete single note ----------------
+@app.route('/notes/<int:note_id>', methods=['PUT'])
+@token_required
+def update_note(current_user, note_id):
+    data = request.get_json() or {}
+    note = Note.query.filter_by(id=note_id, user_id=current_user.id).first()
+    if not note:
+        return jsonify({'message': 'Note not found'}), 404
+
+    note.title = data.get('title', note.title)
+    note.content = data.get('content', note.content)
+    note.category = data.get('category', note.category)
+    note.pinned = bool(data.get('pinned', note.pinned))
+
+    db.session.commit()
+    return jsonify({'message': 'Note updated successfully'}), 200
+
+
+@app.route('/notes/<int:note_id>', methods=['DELETE'])
+@token_required
+def delete_note(current_user, note_id):
+    note = Note.query.filter_by(id=note_id, user_id=current_user.id).first()
+    if not note:
+        return jsonify({'message': 'Note not found'}), 404
+
+    db.session.delete(note)
+    db.session.commit()
+    return jsonify({'message': 'Note deleted successfully'}), 200
+
 # ---------------- Swagger ----------------
 SWAGGER_URL = '/docs'
 API_URL = '/static/swagger.json'
@@ -188,7 +217,6 @@ app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
 # ---------------- Initialize DB ----------------
 if __name__ == '__main__':
     with app.app_context():
-        # Drop and create DB if needed
         db.create_all()
     app.run(debug=True)
 
