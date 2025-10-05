@@ -1,4 +1,4 @@
-const API = "https://notes-app-3-8hk7.onrender.com/";
+const API = "https://notes-app-3-8hk7.onrender.com";
 
 // -------------------- LOGIN & REGISTER --------------------
 async function login() {
